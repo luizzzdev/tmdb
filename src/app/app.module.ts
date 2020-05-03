@@ -7,14 +7,16 @@ import { FormsModule } from '@angular/forms';
 import { HomeComponent } from './home/home.component';
 import { SearchComponent } from './search/search.component';
 import { FavoritesComponent } from './favorites/favorites.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { LoginComponent } from './login/login.component'
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     SearchComponent,
-    FavoritesComponent
+    FavoritesComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
