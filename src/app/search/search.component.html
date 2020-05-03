@@ -1,1 +1,29 @@
-<p>search works!</p>
+<div class="container">
+  <h1>Search</h1>
+
+  <form  [formGroup]="searchForm" (ngSubmit)="search(searchForm.value)">
+    <div class="form-group">
+      <div class="input-group">
+        <input class="form-control" type="text" formControlName="search"/>
+
+        <div class="input-group-append">
+          <button type="submit" class="btn btn-primary">Search</button>
+        </div>
+      </div>
+    </div>
+  </form>
+
+
+  <div class="row">
+    <div class="col-4 p-4" *ngFor="let movie of movies">
+      <div class="card">
+        <img [src]="movie.poster_path" alt="" class="card-img-top">
+        <div class="card-body">
+          <h5 class="card-title">{{movie.title}}</h5>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</div>
