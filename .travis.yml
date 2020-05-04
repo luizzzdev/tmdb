@@ -18,4 +18,4 @@ jobs:
         on:
           branch: master
         target_branch: gh-pages
-        local_dir: dist/tmdb/
+        local_dir: dist/tmdb
