@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import {Movie} from '../../shared/Movie';
 
 @Component({
   selector: 'app-movie-card',
@@ -7,13 +8,11 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class MovieCardComponent implements OnInit {
   
-  @Input() movie: object;
+  @Input() movie: Movie;
   poster_path = 'https://image.tmdb.org/t/p/w200';
 
   constructor() { }
   
-  ngOnInit(): void {
-    console.log(this.movie)
-  }
+  ngOnInit(): void {}
 
 } 

@@ -2,7 +2,9 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { retry, catchError } from 'rxjs/operators';
+import {MovieResponse} from '../shared/MovieResponse';
 import {Movie} from '../shared/Movie';
+
 
 @Injectable({
   providedIn: 'root'
@@ -18,8 +20,8 @@ export class MoviesService {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   }
 
-  getMovies(): Observable<Movie[]> {
-    return this.httpClient.get<Movie[]>(`${this.apiBaseUrl}/discover/movie?api_key=${this.apikey}`)
+  getMovies(): Observable<MovieResponse<Movie>> {
+    return this.httpClient.get<MovieResponse<Movie>>(`${this.apiBaseUrl}/discover/movie?api_key=${this.apikey}`)
       .pipe(
         retry(2),
         catchError(this.handleError))

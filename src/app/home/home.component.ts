@@ -19,10 +19,7 @@ export class HomeComponent implements OnInit {
   }
 
   getMovies() {
-    this.moviesService.getMovies().subscribe((cars: Movie[]) => {
-      this.movies = cars.results
-      console.log(this.movies)
-    });
+    this.moviesService.getMovies().subscribe(resp => this.movies = (resp.results));
   }
 
 
