@@ -78,20 +78,8 @@
             Series do dia
         </h2>
         <div class="d-flex p-2 justify-content-center">
-            <div class=mr-2>
-                <img src={{poster_path}} class="rounded">
-            </div>
-            <div class=mr-2>
-                <img src={{poster_path}} class="rounded">
-            </div>
-            <div class=mr-2>
-                <img src={{poster_path}} class="rounded">
-            </div>
-            <div class=mr-2>
-                <img src={{poster_path}} class="rounded">
-            </div>
-            <div class=mr-2>
-                <img src={{poster_path}} class="rounded">
+            <div class="d-flex justify-content-between flex-wrap">
+                <app-movie-card class="marginGrid" *ngFor="let movie of movies | slice:0:5; " [movie]="movie" ></app-movie-card>
             </div>
         </div>
     </section>
@@ -118,44 +106,8 @@
 
             <img src="{{genre_poster}}" class="rounded w-100 imagem">
 
-            <div class="d-flex align-content-start flex-wrap">
-                <div class="marginGrid">
-                    <img src={{poster_path}} class="rounded">
-                </div>
-                <div class="marginGrid">
-                    <img src={{poster_path}} class="rounded">
-                </div>
-                <div class="marginGrid">
-                    <img src={{poster_path}} class="rounded">
-                </div>
-                <div class="marginGrid">
-                    <img src={{poster_path}} class="rounded">
-                </div>
-                <div class="marginGrid">
-                    <img src={{poster_path}} class="rounded">
-                </div>
-                <div class="marginGrid">
-                    <img src={{poster_path}} class="rounded">
-                </div>
-                <div class="marginGrid">
-                    <img src={{poster_path}} class="rounded">
-                </div>
-                <div class="marginGrid">
-                    <img src={{poster_path}} class="rounded">
-                </div>
-                <div class="marginGrid">
-                    <img src={{poster_path}} class="rounded">
-                </div>
-                <div class="marginGrid">
-                    <img src={{poster_path}} class="rounded">
-                </div>
-                <div class="marginGrid">
-                    <img src={{poster_path}} class="rounded">
-                </div>
-                <div class="marginGrid">
-                    <img src={{poster_path}} class="rounded">
-                </div>
-
+            <div class="d-flex justify-content-between flex-wrap">
+                <app-movie-card class="marginGrid" *ngFor="let movie of movies" [movie]="movie" ></app-movie-card>
             </div>
         </div>
     </section>
