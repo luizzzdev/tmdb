@@ -127,5 +127,8 @@
       }
     }
   },
-  "defaultProject": "tmdb"
+  "defaultProject": "tmdb",
+  "cli": {
+    "analytics": false
+  }
 }
