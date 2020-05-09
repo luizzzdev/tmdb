@@ -1,10 +1,12 @@
-<div class="container">
+<app-navbar></app-navbar>
+
+<div class="container py-4">
   <h1>Search</h1>
 
-  <form  [formGroup]="searchForm" (ngSubmit)="search(searchForm.value)">
+  <form [formGroup]="searchForm" (ngSubmit)="search(searchForm.value)">
     <div class="form-group">
       <div class="input-group">
-        <input class="form-control" type="text" formControlName="search"/>
+        <input class="form-control" type="text" formControlName="search" />
 
         <div class="input-group-append">
           <button type="submit" class="btn btn-primary">Search</button>
@@ -13,17 +15,13 @@
     </div>
   </form>
 
-
   <div class="row">
-    <div class="col-4 p-4" *ngFor="let movie of movies">
-      <div class="card">
-        <img [src]="movie.poster_path" alt="" class="card-img-top">
-        <div class="card-body">
-          <h5 class="card-title">{{movie.title}}</h5>
-        </div>
-      </div>
+    <div class="col-12 col-md-6 col-lg-3 py-4" *ngFor="let movie of movies">
+      <app-movie-card [movie]="movie"></app-movie-card>
     </div>
-
   </div>
 
+  <div class="row justify-content-center" *ngIf="page < totalPages">
+    <button class="btn btn-link" (click)="searchMore()">Carregar mais</button>
+  </div>
 </div>
