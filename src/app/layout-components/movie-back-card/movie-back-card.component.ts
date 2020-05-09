@@ -9,7 +9,7 @@ import { Watchable } from 'src/app/shared/Watchable';
 })
 export class MovieBackCardComponent implements OnInit {
   @Input() movie: Watchable;
-  posterPath = 'https://image.tmdb.org/t/p/w500';
+  posterPath = 'https://image.tmdb.org/t/p/original';
   title: string;
   imageBackdropPath: string;
 
