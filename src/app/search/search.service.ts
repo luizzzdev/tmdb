@@ -1,22 +1,20 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class SearchService {
+  constructor(private http: HttpClient) {}
 
-  constructor(private http: HttpClient) {
-
-  }
-
-  search(query: string) {
+  search(query: string, page: string) {
     const params = {
       api_key: '7378f2aee1d04b6f69ef4bda674b4a91',
-      query
-    }
+      query,
+      page,
+    };
 
-    const url = 'https://api.themoviedb.org/3/search/multi'
-    return this.http.get(url, { params })
+    const url = 'https://api.themoviedb.org/3/search/multi';
+    return this.http.get(url, { params });
   }
 }

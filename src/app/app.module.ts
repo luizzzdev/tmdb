@@ -11,6 +11,7 @@ import { LoginComponent } from './login/login.component'
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import { MovieCardComponent } from './layout-components/movie-card/movie-card.component';
+import { NavbarComponent } from './layout-components/navbar/navbar.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { MovieCardComponent } from './layout-components/movie-card/movie-card.co
     SearchComponent,
     FavoritesComponent,
     LoginComponent,
-    MovieCardComponent
+    MovieCardComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
