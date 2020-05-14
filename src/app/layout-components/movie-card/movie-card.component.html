@@ -1,4 +1,3 @@
 <div class="movie-card card">
-  <img src="{{ imagePath }}" class="card-img-top" />
-<!--  <p class="movie-title">{{ title }}</p>-->
+    <img src="{{ imagePath }}" class="card-img-top" [routerLink]="['/details', movie.id]" />
 </div>
