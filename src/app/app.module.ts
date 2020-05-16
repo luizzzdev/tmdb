@@ -12,10 +12,11 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import { MovieCardComponent } from './layout-components/movie-card/movie-card.component';
 import { NavbarComponent } from './layout-components/navbar/navbar.component';
-
+import {DetailsComponent} from './details/details.component'
 @NgModule({
   declarations: [
     AppComponent,
+    DetailsComponent,
     HomeComponent,
     SearchComponent,
     FavoritesComponent,

@@ -4,7 +4,7 @@ import { Observable, throwError } from 'rxjs';
 import { retry, catchError } from 'rxjs/operators';
 import {MovieResponse} from '../shared/MovieResponse';
 import {Movie} from '../shared/Movie';
-
+import {SimilarMovies} from '../shared/SimilarMovies'
 
 @Injectable({
   providedIn: 'root'
@@ -25,6 +25,10 @@ export class MoviesService {
       .pipe(
         retry(2),
         catchError(this.handleError))
+  }
+
+  getSimilarMovies(movieId): Observable<MovieResponse<SimilarMovies>>{
+    return this.httpClient.get<MovieResponse<SimilarMovies>>(`${this.apiBaseUrl}/movie/${movieId}/similar?api_key=${this.apikey}`)
   }
 
   handleError(error: HttpErrorResponse) {
