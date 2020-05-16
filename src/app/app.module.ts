@@ -14,6 +14,10 @@ import { MovieCardComponent } from './layout-components/movie-card/movie-card.co
 import { NavbarComponent } from './layout-components/navbar/navbar.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
+
+import { CarouselBackdropPathComponent } from './layout-components/carousel-backdrop-path/carousel-backdrop-path.component';
+import { MovieBackCardComponent } from './layout-components/movie-back-card/movie-back-card.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,7 +26,9 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     FavoritesComponent,
     LoginComponent,
     MovieCardComponent,
-    NavbarComponent
+    NavbarComponent,
+    CarouselBackdropPathComponent,
+    MovieBackCardComponent
   ],
   imports: [
     BrowserModule,
