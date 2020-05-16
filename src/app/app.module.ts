@@ -12,6 +12,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import { MovieCardComponent } from './layout-components/movie-card/movie-card.component';
 import { NavbarComponent } from './layout-components/navbar/navbar.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 
 import { CarouselBackdropPathComponent } from './layout-components/carousel-backdrop-path/carousel-backdrop-path.component';
@@ -35,7 +36,8 @@ import { MovieBackCardComponent } from './layout-components/movie-back-card/movi
     FormsModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FontAwesomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]

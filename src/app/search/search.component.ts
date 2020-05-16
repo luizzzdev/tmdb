@@ -21,7 +21,7 @@ export class SearchComponent implements OnInit {
     private formBuilder: FormBuilder
   ) {
     this.searchForm = this.formBuilder.group({
-      search: 'star wars',
+      search: '',
     });
   }
 
@@ -48,6 +48,6 @@ export class SearchComponent implements OnInit {
   }
 
   filterMovies(movies: Array<Watchable>) {
-    return movies.filter((movie: Watchable) => movie.poster_path !== null);
+    return movies.filter((movie: Watchable) => !!movie.poster_path);
   }
 }
