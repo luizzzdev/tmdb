@@ -1,43 +1,100 @@
 <div>
-    <div class="header-container">
+    <div class="header-container" [ngStyle]="{'background-image': getUrl(this.currentMovie.backdrop_path)}">
         <div class="overlay">
-          <p class="title" style="color: white;">nome do filme</p>
-          <p class="title" style="color: white;">{{id}}</p>
+          <p class="title" style="color: white;">{{this.currentMovie.title}}</p>
         </div>
     </div>
-    <div class="body-container row col-lg-12" style="padding: 0;margin: 0;">
-        <div class="col-lg-3 col-md-6 col-12 poster-img" style="padding: 0">
-          <div class="overlay" style="height: 100%;">
-            <p style="color: white;">play</p>
-          </div>
+    <div class="body-container row col-lg-12">
+        <div class="col-lg-3 col-md-6 col-12" style="padding: 0">
+          <div class="poster-img" [ngStyle]="{'background-image': getUrl(this.currentMovie.poster_path)}"></div>
         </div>
-        <div class="col-lg-9 col-md-6 col-12">
-          <h1 class="title">Titulo</h1>
-          <p>Descrição</p>
-        </div>
-    </div>
-    <div class="col-lg-12" style="padding: 0;margin: 0;">
-       <div class="col-lg-12" style="padding: 10px;">
-          <p class="title">Filmes Relacionados</p>  
-        </div>
-        <div id="carouselExampleInterval" class="carousel slide" data-ride="carousel">
-            <div class="carousel-inner" style="padding: 10px 0;">
-              <div class="carousel-item" data-interval="10000" *ngFor="let chunk of similarMovies; index as i;" [ngClass]="{active: i === 0}"> 
-                <div class="d-flex justify-content-around">
-                  <div class="col-lg-3 col-6" *ngFor="let movie of chunk" style="width: 100%; height: 200px; background-color: grey;">
-                      {{movie.title}}
-                    </div>
-                </div>
+        <div class="col-lg-9 col-md-6 col-12" style="padding: 10px;">
+          <div class="col-lg-12 row">
+            <div class="col-lg-8 col-12">
+              <h1>{{this.currentMovie.title}}</h1>
+              <p class="content-text">
+                {{this.currentMovie.overview}}
+              </p>
+            </div>
+            <div class="col-lg-4 col-12" style="background-color: #bdc3c7; border-radius: 5px; padding: 5px;">
+              <div class="col-lg-12 row">
+                <p class="content-text">Release date:</p>
+                <p class="content-text">
+                  {{this.currentMovie.release_date}}
+                </p>
+              </div>
+              <div class="col-lg-12 row">
+                <p class="content-text">Status:</p>
+                <p class="content-text">
+                  {{this.currentMovie.status}}
+                </p>
+              </div>
+              <div class="col-lg-12 row">
+                <p class="content-text">Run Time:</p>
+                <p class="content-text">
+                  {{this.currentMovie.runtime}}
+                </p>
+              </div>
+              <div class="col-lg-12 row">
+                <p class="content-text">Genre:</p>
+                <p *ngFor="let genre of this.currentMovie.genres" class="chip" style="background-color: #2c3e50;">
+                  {{genre.name}}
+                </p>
+              </div>
+              <div class="col-lg-12 row">
+                <p class="content-text">Popularity:</p>
+                <p class="content-text">
+                  {{this.currentMovie.popularity}}
+                </p>
               </div>
             </div>
-            <a class="carousel-control-prev" href="#carouselExampleInterval" role="button" data-slide="prev">
-              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-              <span class="sr-only">Previous</span>
-            </a>
-            <a class="carousel-control-next" href="#carouselExampleInterval" role="button" data-slide="next">
-              <span class="carousel-control-next-icon" aria-hidden="true"></span>
-              <span class="sr-only">Next</span>
-            </a>
+            <div class="col-lg-12" style="background-color: #bdc3c7; border-radius: 5px; margin-top: 10px;">
+              <div class="d-flex align-items-center col-lg-12 row" style="padding: 2px">
+                <p class="content-text">Company:</p>
+                <p *ngFor="let companie of this.currentMovie.production_companies" class="chip" style="background-color: #e74c3c;">
+                  {{companie.name}}
+                </p>
+              </div>
+              <div class="d-flex align-items-center col-lg-12 row" style="padding: 2px;">
+                <p class="content-text">Country:</p>
+                <p *ngFor="let country of this.currentMovie.production_countries" class="chip" style="background-color: #7f8c8d">
+                  {{country.name}}
+                </p>
+              </div>
+              <div class="d-flex align-items-center col-lg-12 row" style="padding: 2px;">
+                <p class="content-text">Languages</p>
+                <p *ngFor="let lang of this.currentMovie.spoken_languages" class="chip" style="background-color: #2ecc71;">
+                  {{lang.name}}
+                </p>
+              </div>
+            </div>
           </div>
+        </div>
+        <div class="col-lg-12" style="padding: 0;margin: 0;">
+           <div class="col-lg-12" style="padding-top: 10px;">
+              <p class="title">Filmes Relacionados</p>  
+            </div>
+            <div id="carouselExampleInterval" class="carousel slide" data-ride="carousel" style="margin-bottom: 20px;">
+                <div class="carousel-inner">
+                  <div class="carousel-item" data-interval="10000" *ngFor="let chunk of similarMovies; index as i;" [ngClass]="{active: i === 0}"> 
+                    <div class="d-flex justify-content-around">
+                      <div class="col-lg-3 col-6 movie-item" *ngFor="let movie of chunk" (click)="reSendToDetails(movie.id)" [ngStyle]="{'background-image': getUrl(movie.poster_path)}">
+                        <div class="overlay" style="height: 100%; border-radius: 5px;">
+                          <p class="title-related-movie">{{movie.title}}</p> 
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <a class="carousel-control-prev" href="#carouselExampleInterval" role="button" data-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carouselExampleInterval" role="button" data-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="sr-only">Next</span>
+                </a>
+              </div>
+        </div>
     </div>
 </div>
