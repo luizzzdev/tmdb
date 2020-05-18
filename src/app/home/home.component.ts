@@ -1,6 +1,7 @@
+import { Movie } from './../shared/Movie';
+import { MovieByGenreService } from './../services/movie-by-genre.service';
 import { Component, OnInit } from '@angular/core';
 import { MoviesService } from '../services/movies.service';
-import { Movie } from '../shared/Movie';
 
 @Component({
   selector: 'app-home',
@@ -8,10 +9,13 @@ import { Movie } from '../shared/Movie';
   styleUrls: ['./home.component.sass'],
 })
 export class HomeComponent implements OnInit {
-  constructor(private moviesService: MoviesService) {}
+  constructor(private moviesService: MoviesService,
+              private movieByGenreService: MovieByGenreService) {}
 
   movie = {} as Movie;
   movies: Movie[];
+  moviesByGenre: Movie[];
+  selectedGenre = 27;
 
   ngOnInit() {
     this.getMovies();
@@ -22,6 +26,16 @@ export class HomeComponent implements OnInit {
       // this.movies = [resp.results[0]];
       this.movies = resp.results;
     });
+  }
+
+  getSelectedGenre() {
+    this.selectedGenre = 27;
+  }
+
+  getMoviesByGenre(selectedGenre){
+      this.movieByGenreService.getMoviesByGenre(selectedGenre).subscribe((resp) => {
+        this.moviesByGenre = resp.results;
+      })
   }
 
   homeTitle = 'Filmes em destaque';

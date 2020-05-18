@@ -15,14 +15,9 @@
       Series do dia
     </h2>
 
-    <div class="row">
-      <div
-        class="col-12 col-md-6 col-lg-3 py-4"
-        *ngFor="let movie of movies | slice: 0:4"
-      >
-        <app-movie-card [movie]="movie"></app-movie-card>
-      </div>
-    </div>
+    <app-carousell-series
+    class=" w-100"
+  ></app-carousell-series>
   </section>
 
   <hr />
@@ -48,7 +43,7 @@
         </div>
       </div>
 
-      <img src="{{ genre_poster }}" class="rounded w-100 imagem" />
+      <img src="{{ genre_poster }}" class="rounded w-100 imagem genreImage" />
     </div>
 
     <div class="row">

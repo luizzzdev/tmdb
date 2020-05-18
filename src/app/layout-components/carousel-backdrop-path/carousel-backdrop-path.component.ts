@@ -1,5 +1,4 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { MoviesService } from '../../services/movies.service';
 import { Movie } from '../../shared/Movie';
 
 @Component({
@@ -10,17 +9,6 @@ import { Movie } from '../../shared/Movie';
 export class CarouselBackdropPathComponent implements OnInit {
   @Input() movies: Array<Movie>;
 
-  constructor(private moviesService: MoviesService) {}
-
-  movie = {} as Movie;
-
   ngOnInit(): void {}
 
-  pic1 = 'https://image.tmdb.org/t/p/original/5BwqwxMEjeFtdknRV792Svo0K1v.jpg';
-  pic2 = 'https://image.tmdb.org/t/p/original/1R6cvRtZgsYCkh8UFuWFN33xBP4.jpg';
-  pic3 = 'https://image.tmdb.org/t/p/original/9sXHqZTet3Zg5tgcc0hCDo8Tn35.jpg';
-  backdrop_path =
-    'https://image.tmdb.org/t/p/original/5BwqwxMEjeFtdknRV792Svo0K1v.jpg';
-  moviePic =
-    'https://image.tmdb.org/t/p/original/5BwqwxMEjeFtdknRV792Svo0K1v.jpg';
 }
