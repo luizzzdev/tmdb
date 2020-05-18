@@ -1,0 +1,66 @@
+<div class="col-lg-12 w-100" style="padding: 0;margin: 0;">
+
+  <div id="carouselExampleInterval" class="carousel slide" data-ride="carousel">
+      <div class="carousel-inner" style="padding: 0 0;">
+        <div class="carousel-item active" data-interval="4000">
+          <div class="row">
+            <div
+              class="col-12 col-md-6 col-lg-3 py-4"
+              *ngFor="let movie of movies | slice: 0:4"
+            >
+              <app-movie-card [movie]="movie"></app-movie-card>
+            </div>
+          </div>
+      </div>
+
+        <div class="carousel-item" data-interval="4000">
+          <div class="row">
+            <div
+              class="col-12 col-md-6 col-lg-3 py-4"
+              *ngFor="let movie of movies | slice: 4:8"
+            >
+              <app-movie-card [movie]="movie"></app-movie-card>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item" data-interval="4000">
+          <div class="row">
+            <div
+              class="col-12 col-md-6 col-lg-3 py-4"
+              *ngFor="let movie of movies | slice: 8:12"
+            >
+              <app-movie-card [movie]="movie"></app-movie-card>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item" data-interval="4000">
+          <div class="row">
+            <div
+              class="col-12 col-md-6 col-lg-3 py-4"
+              *ngFor="let movie of movies | slice: 12:16"
+            >
+              <app-movie-card [movie]="movie"></app-movie-card>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item" data-interval="4000">
+          <div class="row">
+            <div
+              class="col-12 col-md-6 col-lg-3 py-4"
+              *ngFor="let movie of movies | slice: 16:20"
+            >
+              <app-movie-card [movie]="movie"></app-movie-card>
+            </div>
+          </div>
+        </div>
+      </div>
+      <a class="carousel-control-prev" href="#carouselExampleInterval" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#carouselExampleInterval" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div>
+</div>

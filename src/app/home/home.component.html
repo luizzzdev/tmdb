@@ -1,41 +1,40 @@
 
 <div class="container">
   <header class="d-flex flex-column align-items-center mt-2">
-    <h1 class="mb-4 bg-dark w-100 text-center p-2 rounded text--warning">{{ homeTitle }}</h1>
+    <h1 class="mb-3 bg-dark w-100 text-center p-2 rounded">{{ homeTitle }}</h1>
 
-    <div style="position: relative;">
-      <img class="w-100 rounded imagem" src="{{ backdrop_path }}" />
-      <h3 class="mt-4">Titulo do filme</h3>
-    </div>
+    <app-carousel-backdrop-path
+      [movies]="movies"
+      class="w-100"
+    ></app-carousel-backdrop-path>
   </header>
   <hr />
 
   <section>
-    <h2 class="mb-4 bg-light w-100 text-center p-2 rounded">
+    <h2 class="mb-4 bg-dark w-100 text-center p-2 rounded">
       Series do dia
     </h2>
 
-    <div class="row">
-      <div
-        class="col-12 col-md-6 col-lg-3 py-4"
-        *ngFor="let movie of movies | slice: 0:4"
-      >
-        <app-movie-card [movie]="movie"></app-movie-card>
-      </div>
-    </div>
+    <app-carousell-series
+    class=" w-100"
+  ></app-carousell-series>
   </section>
 
   <hr />
 
   <section>
     <div class="d-flex flex-column">
-      <div class="d-flex p-2 mb-4 p-2 bg-light rounded align-items-center">
+      <div class="d-flex p-2 mb-4 p-2 bg-dark rounded align-items-center">
         <h2>
           Generos:
         </h2>
 
         <div class="input-group ml-3">
-          <select class="custom-select" id="inputGroupSelect01">
+          <select
+            class="custom-select"
+            style="background-color: rgb(201, 171, 143);"
+            id="inputGroupSelect01"
+          >
             <option selected>Choose...</option>
             <option value="1">Horror</option>
             <option value="2">Adventure</option>
@@ -44,7 +43,7 @@
         </div>
       </div>
 
-      <img src="{{ genre_poster }}" class="rounded w-100 imagem" />
+      <img src="{{ genre_poster }}" class="rounded w-100 imagem genreImage" />
     </div>
 
     <div class="row">

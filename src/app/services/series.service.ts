@@ -4,8 +4,6 @@ import { Observable, throwError } from 'rxjs';
 import { retry, catchError } from 'rxjs/operators';
 import {MovieResponse} from '../shared/MovieResponse';
 import {Movie} from '../shared/Movie';
-import {SimilarMovies} from '../shared/SimilarMovies'
-import {MovieDetails} from '../shared/MovieDetailsResponse'
 import { Watchable } from '../shared/Watchable';
 import { StorageService } from './storage.service';
 
@@ -13,7 +11,7 @@ import { StorageService } from './storage.service';
 @Injectable({
   providedIn: 'root'
 })
-export class MoviesService {
+export class SeriesService {
 
   apikey = "385801b00919de93e960028b6ca5e4cd"
   apiBaseUrl = 'https://api.themoviedb.org/3';
@@ -24,19 +22,11 @@ export class MoviesService {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   }
 
-  getMovies(): Observable<MovieResponse<Movie>> {
-    return this.httpClient.get<MovieResponse<Movie>>(`${this.apiBaseUrl}/discover/movie?api_key=${this.apikey}`)
+  getSeries(): Observable<MovieResponse<Movie>> {
+    return this.httpClient.get<MovieResponse<Movie>>(`https://api.themoviedb.org/3/tv/airing_today?api_key=385801b00919de93e960028b6ca5e4cd&language=en-US&page=1`)
       .pipe(
         retry(2),
         catchError(this.handleError))
-  }
-
-  getMovieDetalhes(movieId): Observable<MovieDetails>{
-    return this.httpClient.get<MovieDetails>(`${this.apiBaseUrl}/movie/${movieId}?api_key=${this.apikey}`)
-  }
-
-  getSimilarMovies(movieId): Observable<MovieResponse<SimilarMovies>>{
-    return this.httpClient.get<MovieResponse<SimilarMovies>>(`${this.apiBaseUrl}/movie/${movieId}/similar?api_key=${this.apikey}`)
   }
 
   handleError(error: HttpErrorResponse) {

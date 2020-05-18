@@ -13,6 +13,13 @@ import {HttpClientModule} from '@angular/common/http';
 import { MovieCardComponent } from './layout-components/movie-card/movie-card.component';
 import { NavbarComponent } from './layout-components/navbar/navbar.component';
 import {DetailsComponent} from './details/details.component'
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+
+
+import { CarouselBackdropPathComponent } from './layout-components/carousel-backdrop-path/carousel-backdrop-path.component';
+import { MovieBackCardComponent } from './layout-components/movie-back-card/movie-back-card.component';
+import { CarousellSeriesComponent } from './layout-components/carousell-series/carousell-series.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,7 +29,10 @@ import {DetailsComponent} from './details/details.component'
     FavoritesComponent,
     LoginComponent,
     MovieCardComponent,
-    NavbarComponent
+    NavbarComponent,
+    CarouselBackdropPathComponent,
+    MovieBackCardComponent,
+    CarousellSeriesComponent
   ],
   imports: [
     BrowserModule,
@@ -30,7 +40,8 @@ import {DetailsComponent} from './details/details.component'
     FormsModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FontAwesomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]
