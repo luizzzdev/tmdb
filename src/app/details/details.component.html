@@ -1,4 +1,4 @@
-<div>
+<div class="details-container">
     <div class="header-container" [ngStyle]="{'background-image': getUrl(this.currentMovie.backdrop_path)}">
         <div class="overlay">
           <p class="title" style="color: white;">{{this.currentMovie.title}}</p>
@@ -8,69 +8,67 @@
         <div class="col-lg-3 col-md-6 col-12" style="padding: 0">
           <div class="poster-img" [ngStyle]="{'background-image': getUrl(this.currentMovie.poster_path)}"></div>
         </div>
-        <div class="col-lg-9 col-md-6 col-12" style="padding: 10px;">
+        <div class="col-lg-9 col-md-6 col-12">
           <div class="col-lg-12 row">
-            <div class="col-lg-8 col-12">
-              <h1>{{this.currentMovie.title}}</h1>
+            <div style="margin: 10px 0">
+              <h1 class="title">{{this.currentMovie.title}}</h1>
               <p class="content-text">
                 {{this.currentMovie.overview}}
               </p>
             </div>
-            <div class="col-lg-4 col-12" style="background-color: #bdc3c7; border-radius: 5px; padding: 5px;">
-              <div class="col-lg-12 row">
+            <div class="col-12 row">
+              <div class="info-card">
                 <p class="content-text">Release date:</p>
                 <p class="content-text">
                   {{this.currentMovie.release_date}}
                 </p>
               </div>
-              <div class="col-lg-12 row">
+              <div class="info-card">
                 <p class="content-text">Status:</p>
                 <p class="content-text">
                   {{this.currentMovie.status}}
                 </p>
               </div>
-              <div class="col-lg-12 row">
+              <div class="info-card">
                 <p class="content-text">Run Time:</p>
                 <p class="content-text">
                   {{this.currentMovie.runtime}}
                 </p>
               </div>
-              <div class="col-lg-12 row">
+              <div class="info-card">
                 <p class="content-text">Genre:</p>
-                <p *ngFor="let genre of this.currentMovie.genres" class="chip" style="background-color: #2c3e50;">
+                <p *ngFor="let genre of this.currentMovie.genres" class="chip">
                   {{genre.name}}
                 </p>
               </div>
-              <div class="col-lg-12 row">
+              <div class="info-card">
                 <p class="content-text">Popularity:</p>
                 <p class="content-text">
                   {{this.currentMovie.popularity}}
                 </p>
               </div>
-            </div>
-            <div class="col-lg-12" style="background-color: #bdc3c7; border-radius: 5px; margin-top: 10px;">
-              <div class="d-flex align-items-center col-lg-12 row" style="padding: 2px">
+              <div class="info-card">
                 <p class="content-text">Company:</p>
-                <p *ngFor="let companie of this.currentMovie.production_companies" class="chip" style="background-color: #e74c3c;">
+                <p *ngFor="let companie of this.currentMovie.production_companies" class="chip" >
                   {{companie.name}}
                 </p>
               </div>
-              <div class="d-flex align-items-center col-lg-12 row" style="padding: 2px;">
+              <div class="info-card">
                 <p class="content-text">Country:</p>
-                <p *ngFor="let country of this.currentMovie.production_countries" class="chip" style="background-color: #7f8c8d">
+                <p *ngFor="let country of this.currentMovie.production_countries" class="chip" >
                   {{country.name}}
                 </p>
               </div>
-              <div class="d-flex align-items-center col-lg-12 row" style="padding: 2px;">
+              <div class="info-card">
                 <p class="content-text">Languages</p>
-                <p *ngFor="let lang of this.currentMovie.spoken_languages" class="chip" style="background-color: #2ecc71;">
+                <p *ngFor="let lang of this.currentMovie.spoken_languages" class="chip">
                   {{lang.name}}
                 </p>
               </div>
             </div>
           </div>
         </div>
-        <div class="col-lg-12" style="padding: 0;margin: 0;">
+        <div class="col-lg-12" class="slide-container">
            <div class="col-lg-12" style="padding-top: 10px;">
               <p class="title">Filmes Relacionados</p>  
             </div>
