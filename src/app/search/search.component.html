@@ -1,6 +1,6 @@
-<div class="search container py-4">
-  <div class="jumbotron">
-    <h1>Pesquisar filmes ou séries</h1>
+<div class="search-container py-4" [ngStyle]="{'height': movies.length > 0 ? '100%' : '100vh'}">
+  <div class="header">
+    <h1 style="color: white">Pesquisar filmes ou séries</h1>
 
     <form [formGroup]="searchForm" (ngSubmit)="search(searchForm.value)">
       <div class="form-group">
@@ -22,7 +22,7 @@
     </form>
   </div>
 
-  <div class="row">
+  <div class="result-container row">
     <div class="col-12 col-md-6 col-lg-3 py-4" *ngFor="let movie of movies">
       <app-movie-card [movie]="movie"></app-movie-card>
     </div>

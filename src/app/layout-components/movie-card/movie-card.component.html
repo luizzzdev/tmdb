@@ -1,8 +1,8 @@
-<div class="movie-card card">
-  <img src="{{ imagePath }}" class="card-img-top" />
-
-  <div class="card-body">
-    <a class="card-link text-light" [routerLink]="['/details', movie.id]">Ver detalhes</a>
+<div>
+  <div class="movie-card card" [routerLink]="['/details', movie.id]">
+    <img src="{{ imagePath }}" class="card-img-top" />
+  </div>
+  <div class="fav-container">
     <button class="btn btn-link text-light" (click)="addToFavorites()">
       <fa-icon class="favorite-icon" [icon]="faHeartSolid" *ngIf="isFavorite"></fa-icon>
       <fa-icon class="favorite-icon" [icon]="faHeart" *ngIf="!isFavorite"></fa-icon>
