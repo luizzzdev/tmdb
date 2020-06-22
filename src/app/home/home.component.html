@@ -17,7 +17,7 @@
     <app-carousell-series
     class=" w-100"
   ></app-carousell-series>
-  </section>git pull
+  </section>
 
   <section>
     <div class="d-flex flex-column">
@@ -31,20 +31,17 @@
             class="custom-select"
             style="background-color: #696969; color: white"
             id="inputGroupSelect01"
+            (change) = "setSelectedGenre($event.target.value)"
           >
-            <option selected>Choose...</option>
-            <option value="1">Horror</option>
-            <option value="2">Adventure</option>
-            <option value="3">Comedy</option>
+            <option selected>Selecione um gênero e veja os resultados abaixogit !</option>
+            <option *ngFor="let genre of genres" [value]="genre.id">{{genre.name}}</option>
           </select>
         </div>
       </div>
-
-      <img src="{{ genre_poster }}" class="rounded w-100 imagem genreImage" />
     </div>
 
     <div class="row">
-      <div class="col-12 col-md-6 col-lg-3 py-4" *ngFor="let movie of movies">
+      <div class="col-12 col-md-6 col-lg-3 py-4" *ngFor="let movie of moviesByGenre">
         <app-movie-card [movie]="movie"></app-movie-card>
       </div>
     </div>

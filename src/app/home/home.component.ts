@@ -1,7 +1,9 @@
+import { GenreService } from './../services/genre.service';
 import { Movie } from './../shared/Movie';
 import { MovieByGenreService } from './../services/movie-by-genre.service';
 import { Component, OnInit } from '@angular/core';
 import { MoviesService } from '../services/movies.service';
+import { Genre } from '../shared/Genre';
 
 @Component({
   selector: 'app-home',
@@ -10,21 +12,32 @@ import { MoviesService } from '../services/movies.service';
 })
 export class HomeComponent implements OnInit {
   constructor(private moviesService: MoviesService,
-              private movieByGenreService: MovieByGenreService) {}
+              private movieByGenreService: MovieByGenreService,
+              private genreService: GenreService) {}
 
   movie = {} as Movie;
   movies: Movie[];
   moviesByGenre: Movie[];
-  selectedGenre = 27;
+  selectedGenre = 0;
+  genres: Genre[] = [];
+  homeTitle = 'Filmes em destaque';
 
   ngOnInit() {
     this.getMovies();
+    this.genreService.getGenres().subscribe((resp) => {
+      this.genres = resp.genres;
+    });
+  }
+
+  setSelectedGenre(genreId ){
+      this.selectedGenre = genreId;
+      this.getMoviesByGenre(this.selectedGenre);
   }
 
   getMovies() {
     this.moviesService.getMovies().subscribe((resp) => {
       // this.movies = [resp.results[0]];
-      this.movies = resp.results;
+      this.movies = resp.results.filter(movie => !!movie.backdrop_path);
     });
   }
 
@@ -34,14 +47,7 @@ export class HomeComponent implements OnInit {
 
   getMoviesByGenre(selectedGenre){
       this.movieByGenreService.getMoviesByGenre(selectedGenre).subscribe((resp) => {
-        this.moviesByGenre = resp.results;
-      })
+        this.moviesByGenre = resp.results.filter(movie => !!movie.poster_path);
+      });
   }
-
-  homeTitle = 'Filmes em destaque';
-  backdrop_path =
-    'https://image.tmdb.org/t/p/original/5BwqwxMEjeFtdknRV792Svo0K1v.jpg';
-  poster_path = 'https://image.tmdb.org/t/p/w200';
-  genre_poster =
-    'https://image.tmdb.org/t/p/original/xHCfWGlxwbtMeeOnTvxUCZRGnkk.jpg';
 }

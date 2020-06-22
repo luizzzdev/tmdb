@@ -16,12 +16,12 @@ export class MovieCardComponent implements OnInit {
   title: string;
   imagePath: string;
 
-  faHeartSolid = faHeartSolid
-  faHeart = faHeart
+  faHeartSolid = faHeartSolid;
+  faHeart = faHeart;
 
 
   get isFavorite() {
-    return this.moviesService.isFavorite(this.movie)
+    return this.moviesService.isFavorite(this.movie);
   }
 
   constructor(private moviesService: MoviesService) {}
@@ -32,6 +32,6 @@ export class MovieCardComponent implements OnInit {
   }
 
   addToFavorites() {
-    this.moviesService.addToFavorites(this.movie)
+    this.moviesService.addToFavorites(this.movie);
   }
 }
