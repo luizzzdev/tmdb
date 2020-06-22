@@ -10,7 +10,7 @@
   </header>
 
   <section>
-    <h2 class="mb-4 bg-dark w-100 text-center p-2 rounded">
+    <h2 class="mt-2 bg-dark w-100 text-center p-2 rounded">
       Series do dia
     </h2>
 
@@ -33,7 +33,7 @@
             id="inputGroupSelect01"
             (change) = "setSelectedGenre($event.target.value)"
           >
-            <option selected>Selecione um gênero e veja os resultados abaixogit !</option>
+            <option selected>Selecione um gênero e veja os resultados abaixo!</option>
             <option *ngFor="let genre of genres" [value]="genre.id">{{genre.name}}</option>
           </select>
         </div>
