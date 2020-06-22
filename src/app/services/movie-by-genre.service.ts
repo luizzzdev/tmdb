@@ -4,9 +4,10 @@ import { Observable, throwError } from 'rxjs';
 import { retry, catchError } from 'rxjs/operators';
 import {MovieResponse} from '../shared/MovieResponse';
 import {Movie} from '../shared/Movie';
+import {SimilarMovies} from '../shared/SimilarMovies'
+import {MovieDetails} from '../shared/MovieDetailsResponse'
 import { Watchable } from '../shared/Watchable';
 import { StorageService } from './storage.service';
-
 
 @Injectable({
   providedIn: 'root'
@@ -24,11 +25,17 @@ export class MovieByGenreService {
 
   getMoviesByGenre(genre: number): Observable<MovieResponse<Movie>> {
     return this.httpClient.get<MovieResponse<Movie>>(`${this.apiBaseUrl}/discover/movie?api_key=${this.apikey}&language=en-US&sort_by=popularity.desc&include_adult=true&include_video=false&page=1&with_genres=${genre}`)
-
-
       .pipe(
         retry(2),
         catchError(this.handleError))
+  }
+
+  getMovieDetalhes(movieId): Observable<MovieDetails>{
+    return this.httpClient.get<MovieDetails>(`${this.apiBaseUrl}/movie/${movieId}?api_key=${this.apikey}`)
+  }
+
+  getSimilarMovies(movieId): Observable<MovieResponse<SimilarMovies>>{
+    return this.httpClient.get<MovieResponse<SimilarMovies>>(`${this.apiBaseUrl}/movie/${movieId}/similar?api_key=${this.apikey}`)
   }
 
   handleError(error: HttpErrorResponse) {
