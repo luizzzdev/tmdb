@@ -1,4 +1,4 @@
-<div class="movie-back-card rounded">
+<div class="movie-back-card rounded" [routerLink]="['/details', movie.id]">
   <img class="d-block w-100 rounded" src="{{ imageBackdropPath }}" />
   <h3 class="mt-4 movie-title rounded">{{ title }}</h3>
 </div>

@@ -21,8 +21,7 @@ export class CarousellSeriesComponent implements OnInit {
 
   getSeries() {
     this.serieService.getSeries().subscribe((resp) => {
-      this.movies = resp.results;
+      this.movies = resp.results.filter(movie => !!movie.poster_path);
     });
   }
-
 }
